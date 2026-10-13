@@ -1,0 +1,27 @@
+# dependências
+node_modules/
+
+# sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# editores
+.vscode/
+.idea/
+*.swp
+*~
+
+# ambiente e segredos — nunca versionar
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
+*_deploy
+*_deploy.pub
+
+# temporários de auditoria e geração de arte
+_audit*.html
+_og-card.html
+*.log

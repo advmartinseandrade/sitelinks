@@ -1,0 +1,13 @@
+# O servidor da HostGator e Linux: garante LF no repositorio e no checkout,
+# independentemente de o commit sair de uma maquina Windows.
+* text=auto eol=lf
+
+# binarios nao passam por conversao de fim de linha
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.gif  binary
+*.ico  binary
+*.woff  binary
+*.woff2 binary
