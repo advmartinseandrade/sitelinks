@@ -1,0 +1,17 @@
+---
+# Publicação na HostGator via cPanel > Git Version Control.
+# Copia apenas os arquivos públicos para public_html/sitelink
+# (https://advmartinseandrade.com/sitelink/). Tudo o que não estiver listado
+# aqui fica no repositório e NÃO vai para o ar: .git, .gitignore,
+# .gitattributes e o próprio .cpanel.yml.
+#
+# O destino é uma subpasta: nada aqui toca o index.html da raiz (a página em
+# construção) nem public_html/cnh-suspensa.
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/sitelink
+    - /bin/mkdir -p "$DEPLOYPATH/assets"
+    # página do link bio
+    - /bin/cp -f index.html "$DEPLOYPATH/"
+    # capa, retrato, favicons e imagem de preview
+    - /bin/cp -Rf assets/. "$DEPLOYPATH/assets/"
