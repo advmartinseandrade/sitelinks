@@ -66,8 +66,21 @@ p{margin:0}
 .page{width:100%; max-width:480px; margin-inline:auto; flex:1; display:flex; flex-direction:column; position:relative; z-index:1}
 
 /* ---------- capa + avatar ---------- */
-.capa{position:relative; aspect-ratio:1080/607; max-height:190px; overflow:hidden}
-.capa img{width:100%; height:100%; object-fit:cover; object-position:50% 40%}
+/* A faixa e mais larga que a arte (2:1 contra ~16:9), entao sempre sobra altura
+   de imagem para cortar. E essa sobra que permite reposicionar o logotipo sem
+   abrir fundo nas pontas. */
+.capa{position:relative; aspect-ratio:1080/540; max-height:190px; overflow:hidden}
+/* O logotipo nao esta no meio do arquivo: o centro dele cai em 47,03% da altura
+   da arte (linhas 133 a 438 de capa.jpg). Com object-position o deslocamento e
+   uma fracao da SOBRA do corte, que muda junto com a largura da tela - por isso
+   no celular o logo saia do eixo. translateY e fracao da propria altura da
+   imagem, que escala com a largura, entao -47,03% crava o centro do logotipo no
+   centro da faixa em qualquer tela. */
+.capa img{
+  position:absolute; left:0; top:50%; width:100%; height:auto;
+  min-height:100%; object-fit:cover;
+  transform:translateY(-47.03%);
+}
 /* o degrade entrega a capa no fundo da pagina sem uma linha dura de corte e
    abre espaco para o avatar, que avanca sobre a parte de baixo da arte */
 .capa::after{
